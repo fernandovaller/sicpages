@@ -2,3 +2,4 @@
 .env
 /vendor
 /gcrud2
+composer.lock

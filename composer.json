@@ -13,7 +13,7 @@
         "psr-4":{
             "System\\": "system/class/",
             "Site\\":"app/site/class/",
-            "Admin\\": "app/admin/class/",
+            "Admin\\": "app/admin/class/"
         }
     }
 
