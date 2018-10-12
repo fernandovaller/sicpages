@@ -28,9 +28,8 @@ class Util {
 	}    
 
 	public static function tooltip($title, $icon = true){
-		$tool = 'data-toggle="tooltip" data-html="true" data-placement="top" title="'.$title.'"';
-		if($icon)
-			return '<i class="fa fa-info-circle fa-fw" '.$tool.'></i>';
+		$tool = 'data-toggle="tooltip" data-html="true" data-placement="top" title="'.$title.'"';		
+		if($icon) return ' <i class="fa fa-info-circle fa-fw" '.$tool.'></i>';
 		return $tool;
 	}		
 
