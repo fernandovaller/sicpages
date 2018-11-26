@@ -15,6 +15,9 @@ include SYSTEM_PATH.'core/bootstrap.php';
 //Definir rotas
 include APP_PATH . 'router.php';
 
+//pega o parametro via GET
+//$_GET['p'] e se nao exitir recebe home
+$page = System\Router::pGET('p', 'home');
 
 //Definir as config do app
 if(file_exists(APP_PATH . System\Config::getDefaultRouter() . 'config.php'))

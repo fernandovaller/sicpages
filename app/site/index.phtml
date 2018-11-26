@@ -50,10 +50,9 @@
       </div>
     </nav>
     
-  <?php
-    $page = System\Router::getURL(1, 'home');
-    System\Page::loadin($page, 'pages', System\Config::getDefaultRouter());
-  ?>
+    <div class="conteudo-paginas">
+      <?=System\Page::loads($page, System\Config::getDefaultRouter());?>
+    </div>     
 
   </div>  
   

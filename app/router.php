@@ -6,6 +6,11 @@ use System\Config;
 //DEFINIR AS ROTAS
 //O sistema trabalha exibindo sempre a index
 
+//Config::setDefaultRouter('app');
+//Adicionando o caminho ate a aplicao para
+//nao interferir nas rotas - url[0]
+Router::setPrefix(['empresa_modelo', 'sicloc01']);
+
 //GRUPO DE ROTAS PARA ADMIN
 //****************************************
 Router::group('admin', function() {
@@ -32,10 +37,24 @@ Router::group('admin', function() {
 
 //GRUPO DE ROTAS DEFAULT (SITE)
 //****************************************
+//Requisições ao arquivos modulo-actions
 Router::any('pages', function(){
+	//Page::loads(Router::getURL(1), Config::getDefaultRouter());
 	Page::loads(Router::getURL(1));
 });
 
-Router::any('gcrud', function(){
+//requisicoes ajax
+Router::any('ajax', function(){
 	Page::loads(Router::getURL(1));
+	exit();	
 });
+
+// Router::any('relatorios', function(){
+// 	Page::load('relatorios/index');
+// 	exit();	
+// });
+
+// Router::any('print', function(){	
+// 	Page::loads(Router::getURL(1));
+// 	exit();
+// });

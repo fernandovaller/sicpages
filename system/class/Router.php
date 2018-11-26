@@ -52,7 +52,13 @@ class Router {
 
         $_url = explode('/', filter_var( rtrim(urldecode($URI), '/') , FILTER_SANITIZE_URL));  
         $_url = array_filter(array_map('anti_injection', $_url));    
-        if($remove_zero) array_shift($_url);        
+        if($remove_zero) array_shift($_url);
+
+        //verifica se existe prefixo definido
+        if(!empty(self::$prefix)) 
+            $_url = array_diff($_url, self::$prefix);
+
+        $_url = array_values($_url);        
 
         return $_url;  
     }
@@ -60,7 +66,7 @@ class Router {
     //retorno o valor da url no indice passado. 
     //Ex: url[1] / url[2] ....
     public static function getURL($index, $default = ''){        
-        $url_ = self::URL(false);        
+        $url_ = self::URL(true);        
         return !empty($url_[$index]) ? $url_[$index] : $default;
     }
 
@@ -71,7 +77,7 @@ class Router {
 
     public static function get($url, $callback = ''){
         if(self::method() === 'GET'){
-            $_url = self::URL();
+            $_url = self::URL();            
             if($url === $_url[0]){
                 if($callback) call_user_func($callback);
             }
@@ -122,6 +128,19 @@ class Router {
     public static function pGET($name, $default = ''){
         $value = filter_input(INPUT_GET, "{$name}", FILTER_SANITIZE_STRING);
         return !empty($value) ? $value : $default; 
+    }    
+
+    //define a pagina
+    public static function page($url_index, $default = ''){
+        $value = self::getURL($url_index);        
+        return !empty($value) ? $value : $default; 
+    }
+
+    //adidione caminho ate o seu sistema
+    public static function setPrefix($path = array()){        
+        if(is_array($path) && !empty($path)){
+            self::$prefix = $path;            
+        }
     }
 
 }

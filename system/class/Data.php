@@ -92,11 +92,32 @@ class Data {
     public static function diff($data_mysql_ini, $data_mysql_fim){
       $datetime1 = new \DateTime($data_mysql_ini);
       $datetime2 = new \DateTime($data_mysql_fim);
-      $difference = $datetime2->diff($datetime1);
-      return $difference->format('%a');
+      if($datetime2 >= $datetime1){
+        $difference = $datetime2->diff($datetime1);
+        return $difference->format('%a');  
+      }
+      return '0';      
       //return $difference->d;
       //return $difference->y;
       //return $difference->m;
+     }     
+
+     //verifica se data é maior
+     //data 1 > data 2
+     public static function compararData($data1, $data2){
+      $datetime1 = new \DateTime($data1);
+      $datetime2 = new \DateTime($data2);
+      if($datetime1 >= $datetime2){
+        return true;        
+      }
+      return false;
      } 
+
+     public static function isNegative(\DateInterval $interval)
+     {
+      $now = new \DateTimeImmutable();
+      $newTime = $now->add($interval);
+      return $newTime < $now;
+    }      
     
 }
