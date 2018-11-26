@@ -9,7 +9,7 @@ use System\Config;
 //Config::setDefaultRouter('app');
 //Adicionando o caminho ate a aplicao para
 //nao interferir nas rotas - url[0]
-Router::setPrefix(['empresa_modelo', 'sicloc01']);
+//Router::setPrefix(['pasta_antes_do_sistemas']);
 
 //GRUPO DE ROTAS PARA ADMIN
 //****************************************
