@@ -40,6 +40,7 @@ Router::group('admin', function() {
 //Requisições ao arquivos modulo-actions
 Router::any('pages', function(){
 	//Page::loads(Router::getURL(1), Config::getDefaultRouter());
+	var_dump(Router::getURL(1));
 	Page::loads(Router::getURL(1));
 });
 

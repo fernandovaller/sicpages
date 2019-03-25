@@ -1,6 +1,9 @@
 <?php
 //CONFIGURAÇÕES GERAIS DO SISTEMA
 //Essas configurações se aplicam a todos os sistemas dentro da pasta APP
+define('SITE_TITLE', 'SicPages - Simples framework em php');
+define('SITE_NAME', 'SICPAGES');
+define('SITE_FOOTER', 'Copyright &copy;');
 
 //CONFIG DB
 define('DB_HOST', getenv('DB_HOST'));
@@ -14,4 +17,4 @@ define('URL_ADMIN', getenv('URL_ADMIN'));
 define('PATH_UPLOADS', 'uploads');
 
 //pasta padrao do sistema dentro de APP
-$CONFIG['default_router'] = 'site';
+$CONFIG['default_router'] = '';

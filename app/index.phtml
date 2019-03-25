@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <title><?=SITE_TITLE?></title>      
+    <link href="<?=URL?>/css/bootstrap.css" rel="stylesheet" media="all">        
+    <link href="<?=URL?>/css/font-awesome.min.css" rel="stylesheet" media="screen" >    
+                 
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->     
+</head>
+<body>    
+
+
+  <div class="container">
+    <h1><?=SITE_NAME?></h1>
+    
+
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>          
+        </div>
+    
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/quem-somos">Quem somos</a></li>
+            <li><a href="/contato">Contato</a></li>            
+          </ul>         
+
+           <ul class="nav navbar-nav navbar-right">            
+            <li><a href="/admin/">Admin</a></li>
+          </ul>
+
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </nav>
+    
+    <div class="conteudo-paginas">
+      <?php 
+      $page = System\Router::pURL(0, 'home');
+      System\Page::loadin($page, System\Config::getDefaultRouter(), 'pages');
+      ?>
+    </div>     
+
+  </div>  
+  
+  <p class="text-center small text-muted"><?=SITE_FOOTER?></p>  
+
+  <script src="//code.jquery.com/jquery.js"></script>  
+  <script src="<?=URL?>/js/bootstrap.min.js"></script>
+  <script src="<?=URL?>/js/jquery-ui-1.12.js"></script>  
+</body>
+</html>

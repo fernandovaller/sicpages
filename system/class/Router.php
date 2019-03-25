@@ -42,7 +42,7 @@ class Router {
         return $method;     
     }   
 
-    public static function URL($remove_zero = true){
+    public static function URL(){
         $URI = urldecode(
             parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
         );
@@ -52,7 +52,7 @@ class Router {
 
         $_url = explode('/', filter_var( rtrim(urldecode($URI), '/') , FILTER_SANITIZE_URL));  
         $_url = array_filter(array_map('anti_injection', $_url));    
-        if($remove_zero) array_shift($_url);
+        //if($remove_zero) array_shift($_url);
 
         //verifica se existe prefixo definido
         if(!empty(self::$prefix)) 
@@ -94,6 +94,7 @@ class Router {
         }
     }   
 
+    //Rota para qualquer metodo GET|POST
     public static function any($url, $callback = ''){
         if(self::method() === 'POST' || self::method() === 'GET'){
             $_url = self::URL();
@@ -104,9 +105,10 @@ class Router {
         }
     }   
 
+    //Rota de grupo
     public static function group($url, $callback = ''){
-        $_url = self::URL(false);
-        if($url === $_url[1]){
+        $_url = self::URL(false);        
+        if($url === $_url[0]){
             if($callback) call_user_func($callback);
         }
     }
@@ -127,6 +129,12 @@ class Router {
 
     public static function pGET($name, $default = ''){
         $value = filter_input(INPUT_GET, "{$name}", FILTER_SANITIZE_STRING);
+        return !empty($value) ? $value : $default; 
+    }      
+
+    public static function pURL($index, $default = ''){
+        //$value = filter_input(INPUT_GET, "{$name}", FILTER_SANITIZE_STRING);
+        $value = self::getURL($index);
         return !empty($value) ? $value : $default; 
     }    
 

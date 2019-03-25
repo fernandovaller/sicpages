@@ -11,8 +11,9 @@ class Config {
     }
 
     public static function getDefaultRouter(){
-        //return self::$default_router . DIRECTORY_SEPARATOR;
-        return self::$default_router;
+        if(!empty(self::$default_router))
+            return self::$default_router . DIRECTORY_SEPARATOR;        
+        return '';
     }
 
     public static function setDefaultRouter($default_router){
